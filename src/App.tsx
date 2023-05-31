@@ -622,7 +622,7 @@ export const App = () => (
             </Text>
           </GridSectionLeft>
           <GridSectionRight gap={6}>
-            <Link href='https://github.com/arkeonetwork'>
+            <Link isExternal href='https://github.com/arkeonetwork'>
               <Flex gap={4}>
                 <FaGithub fontSize='42px' />
                 <Stack mt={2}>
@@ -658,7 +658,7 @@ export const App = () => (
                 </Stack>
               </Flex>
             </Link>
-            <Link href='https://github.com/arkeonetwork'>
+            <Link isExternal href='https://github.com/arkeonetwork'>
               <Flex gap={4}>
                 <FaGithub fontSize='42px' />
                 <Stack mt={2}>
@@ -676,7 +676,7 @@ export const App = () => (
                 </Stack>
               </Flex>
             </Link>
-            <Link href='https://twitter.com/arkeonetwork'>
+            <Link isExternal href='https://twitter.com/arkeonetwork'>
               <Flex gap={4}>
                 <FaTwitter fontSize='42px' />
                 <Stack mt={2}>
