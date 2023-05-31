@@ -622,12 +622,17 @@ export const App = () => (
             </Text>
           </GridSectionLeft>
           <GridSectionRight gap={6}>
-            <Link isExternal href='https://github.com/arkeonetwork'>
+            <Link
+              isExternal
+              href='https://github.com/arkeonetwork'
+              role='group'
+              _hover={{ textDecoration: 'none' }}
+            >
               <Flex gap={4}>
                 <FaGithub fontSize='42px' />
                 <Stack mt={2}>
                   <Flex gap={2} alignItems='center'>
-                    <Heading as='h5' fontSize='lg'>
+                    <Heading as='h5' fontSize='lg' _groupHover={{ textDecoration: 'underline' }}>
                       Documentation & Tutorials
                     </Heading>
                     <FaExternalLinkAlt />
@@ -640,12 +645,12 @@ export const App = () => (
                 </Stack>
               </Flex>
             </Link>
-            <Link>
+            <Link role='group' _hover={{ textDecoration: 'none' }}>
               <Flex gap={4}>
                 <FaDiscord fontSize='42px' />
                 <Stack mt={2}>
                   <Flex gap={2} alignItems='center'>
-                    <Heading as='h5' fontSize='lg'>
+                    <Heading as='h5' fontSize='lg' _groupHover={{ textDecoration: 'underline' }}>
                       Community Chat
                     </Heading>
                     <FaExternalLinkAlt />
@@ -658,12 +663,17 @@ export const App = () => (
                 </Stack>
               </Flex>
             </Link>
-            <Link isExternal href='https://github.com/arkeonetwork'>
+            <Link
+              role='group'
+              isExternal
+              href='https://github.com/arkeonetwork'
+              _hover={{ textDecoration: 'none' }}
+            >
               <Flex gap={4}>
                 <FaGithub fontSize='42px' />
                 <Stack mt={2}>
                   <Flex gap={2} alignItems='center'>
-                    <Heading as='h5' fontSize='lg'>
+                    <Heading as='h5' fontSize='lg' _groupHover={{ textDecoration: 'underline' }}>
                       Arkeo Github
                     </Heading>
                     <FaExternalLinkAlt />
@@ -676,18 +686,23 @@ export const App = () => (
                 </Stack>
               </Flex>
             </Link>
-            <Link isExternal href='https://twitter.com/arkeonetwork'>
+            <Link
+              role='group'
+              isExternal
+              href='https://twitter.com/arkeonetwork'
+              _hover={{ textDecoration: 'none' }}
+            >
               <Flex gap={4}>
                 <FaTwitter fontSize='42px' />
                 <Stack mt={2}>
                   <Flex gap={2} alignItems='center'>
-                    <Heading as='h5' fontSize='lg'>
+                    <Heading as='h5' fontSize='lg' _groupHover={{ textDecoration: 'underline' }}>
                       Arkeo Twitter
                     </Heading>
                     <FaExternalLinkAlt />
                   </Flex>
 
-                  <Text color='purple.200' fontSize='lg'>
+                  <Text color='purple.200' fontSize='lg' textDecoration='none'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                     incididunt ut labore
                   </Text>
