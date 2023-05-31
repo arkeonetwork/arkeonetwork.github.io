@@ -624,7 +624,7 @@ export const App = () => (
           <GridSectionRight gap={6}>
             <Link
               isExternal
-              href='https://github.com/arkeonetwork'
+              href='https://docs.arkeo.network/'
               role='group'
               _hover={{ textDecoration: 'none' }}
             >
@@ -637,15 +637,14 @@ export const App = () => (
                     </Heading>
                     <FaExternalLinkAlt />
                   </Flex>
-
-                  <Text color='purple.200' fontSize='lg'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore
-                  </Text>
                 </Stack>
               </Flex>
             </Link>
-            <Link role='group' _hover={{ textDecoration: 'none' }}>
+            <Link
+              href='https://discord.gg/BfEHpm6uFc'
+              role='group'
+              _hover={{ textDecoration: 'none' }}
+            >
               <Flex gap={4}>
                 <FaDiscord fontSize='42px' />
                 <Stack mt={2}>
@@ -655,11 +654,6 @@ export const App = () => (
                     </Heading>
                     <FaExternalLinkAlt />
                   </Flex>
-
-                  <Text color='purple.200' fontSize='lg'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore
-                  </Text>
                 </Stack>
               </Flex>
             </Link>
@@ -678,11 +672,6 @@ export const App = () => (
                     </Heading>
                     <FaExternalLinkAlt />
                   </Flex>
-
-                  <Text color='purple.200' fontSize='lg'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore
-                  </Text>
                 </Stack>
               </Flex>
             </Link>
@@ -701,11 +690,6 @@ export const App = () => (
                     </Heading>
                     <FaExternalLinkAlt />
                   </Flex>
-
-                  <Text color='purple.200' fontSize='lg' textDecoration='none'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore
-                  </Text>
                 </Stack>
               </Flex>
             </Link>
