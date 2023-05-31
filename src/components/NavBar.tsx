@@ -47,7 +47,7 @@ export const NavBar = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} mx='auto'>
+        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Logo />
 
           <Flex display={{ base: 'none', md: 'flex' }} ml='auto'>
