@@ -25,7 +25,7 @@ export const NavBar = () => {
   const { toggleColorMode } = useColorMode()
 
   return (
-    <Box position='fixed' top={0} left={0} width='full' zIndex='banner'>
+    <Box position='fixed' top={0} left={0} width='full' zIndex='banner' backdropFilter='blur(15px)'>
       <Flex
         color={useColorModeValue('gray.600', 'white')}
         minH={'72px'}
