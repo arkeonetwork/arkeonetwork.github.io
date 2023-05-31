@@ -16,6 +16,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react'
+import { Link as ScrollLink } from 'react-scroll'
 
 import { Logo } from './Logo'
 
@@ -99,12 +100,15 @@ const DesktopNav = () => {
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Button
-                as={Link}
+                as={ScrollLink}
                 p={2}
                 variant='ghost'
-                href={navItem.href ?? '#'}
+                to={navItem.href ?? '#'}
+                spy={true}
+                smooth={true}
                 fontWeight={500}
                 color={linkColor}
+                sx={{ '&.active': { textDecoration: 'underline' } }}
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
@@ -240,26 +244,26 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   {
     label: 'Home',
-    href: '#',
+    href: 'home',
   },
   {
     label: 'How It Works',
-    href: '#how-it-works',
+    href: 'how-it-works',
   },
   {
     label: 'Benefits',
-    href: '#benefits',
+    href: 'benefits',
   },
   {
     label: 'Use Cases',
-    href: '#use-cases',
+    href: 'use-cases',
   },
   {
     label: 'Arkeo Difference',
-    href: '#arkeo-difference',
+    href: 'arkeo-difference',
   },
   {
     label: 'Community',
-    href: '#community',
+    href: 'community',
   },
 ]
