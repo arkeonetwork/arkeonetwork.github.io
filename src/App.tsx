@@ -198,8 +198,8 @@ export const App = () => (
               can be either subscription based or pay-as-you-go, with more options coming.
             </ListItem>
             <ListItem number='3'>
-              Anyone can run full nodes of any blockchain and allow people to query their node(s) at
-              a price of their choosing. These individuals are called data providers.
+              Each query between a user and data provider is cryptographically provable and
+              redeemable on-chain as income for data providers.
             </ListItem>
             <ListItem number='4'>
               10% of data provider income is paid to the network reserve, which is used to emit
