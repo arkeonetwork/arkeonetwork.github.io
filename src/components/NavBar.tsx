@@ -12,7 +12,6 @@ import {
   PopoverTrigger,
   Stack,
   Text,
-  useColorMode,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -22,7 +21,6 @@ import { Logo } from './Logo'
 
 export const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure()
-  const { toggleColorMode } = useColorMode()
 
   return (
     <Box position='fixed' top={0} left={0} width='full' zIndex='banner' backdropFilter='blur(15px)'>
@@ -81,7 +79,7 @@ export const NavBar = () => {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <Button onClick={toggleColorMode}>Toggle</Button>
+        {/* <Button onClick={toggleColorMode}>Toggle</Button> */}
         <MobileNav />
       </Collapse>
     </Box>
@@ -191,8 +189,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? '#'}
+        as={ScrollLink}
+        to={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
