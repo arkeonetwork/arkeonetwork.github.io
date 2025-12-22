@@ -19,6 +19,8 @@ import { Link as ScrollLink } from 'react-scroll'
 
 import { Logo } from './Logo'
 
+const MARKETPLACE_URL = 'https://marketplace.builtonarkeo.com/'
+
 export const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure()
 
@@ -46,13 +48,23 @@ export const NavBar = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} align='center'>
           <Link href='/'>
             <Logo />
           </Link>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml='auto'>
+          <Flex display={{ base: 'none', md: 'flex' }} ml='auto' align='center' gap={4}>
             <DesktopNav />
+            <Button
+              as={Link}
+              href={MARKETPLACE_URL}
+              bg='teal.500'
+              color='white'
+              aria-label='Open Arkeo Data Marketplace'
+              _hover={{ bg: 'teal.400', boxShadow: '0 0 12px rgba(59, 224, 255, 0.6)' }}
+            >
+              Arkeo Data Marketplace
+            </Button>
           </Flex>
         </Flex>
 
@@ -93,48 +105,68 @@ const DesktopNav = () => {
 
   return (
     <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map(navItem => (
-        <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Button
-                as={ScrollLink}
-                p={2}
-                variant='ghost'
-                to={navItem.href ?? '#'}
-                spy={true}
-                smooth={true}
-                fontWeight={500}
-                color={linkColor}
-                sx={{ '&.active': { textDecoration: 'underline' } }}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Button>
-            </PopoverTrigger>
+      {NAV_ITEMS.map(navItem => {
+        const isExternal = Boolean(navItem.isExternal || navItem.href?.startsWith('http'))
+        return (
+          <Box key={navItem.label}>
+            <Popover trigger={'hover'} placement={'bottom-start'}>
+              <PopoverTrigger>
+                {isExternal ? (
+                  <Button
+                    as={Link}
+                    p={2}
+                    variant='ghost'
+                    href={navItem.href}
+                    fontWeight={500}
+                    color={linkColor}
+                    _hover={{
+                      textDecoration: 'none',
+                      color: linkHoverColor,
+                    }}
+                  >
+                    {navItem.label}
+                  </Button>
+                ) : (
+                  <Button
+                    as={ScrollLink}
+                    p={2}
+                    variant='ghost'
+                    to={navItem.href ?? '#'}
+                    spy={true}
+                    smooth={true}
+                    fontWeight={500}
+                    color={linkColor}
+                    sx={{ '&.active': { textDecoration: 'underline' } }}
+                    _hover={{
+                      textDecoration: 'none',
+                      color: linkHoverColor,
+                    }}
+                  >
+                    {navItem.label}
+                  </Button>
+                )}
+              </PopoverTrigger>
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}
-              >
-                <Stack>
-                  {navItem.children.map(child => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
+              {navItem.children && (
+                <PopoverContent
+                  border={0}
+                  boxShadow={'xl'}
+                  bg={popoverContentBgColor}
+                  p={4}
+                  rounded={'xl'}
+                  minW={'sm'}
+                >
+                  <Stack>
+                    {navItem.children.map(child => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Box>
+        )
+      })}
     </Stack>
   )
 }
@@ -175,6 +207,17 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 const MobileNav = () => {
   return (
     <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+      <Button
+        as={Link}
+        href={MARKETPLACE_URL}
+        bg='teal.500'
+        color='white'
+        width='full'
+        aria-label='Open Arkeo Data Marketplace'
+        _hover={{ bg: 'teal.400', boxShadow: '0 0 12px rgba(59, 224, 255, 0.6)' }}
+      >
+        Arkeo Data Marketplace
+      </Button>
       {NAV_ITEMS.map(navItem => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -182,34 +225,62 @@ const MobileNav = () => {
   )
 }
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href, isExternal }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure()
+  const isExternalLink = Boolean(isExternal || (href && href.startsWith('http')))
+  const linkColor = useColorModeValue('gray.600', 'gray.200')
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={ScrollLink}
-        to={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
-        _hover={{
-          textDecoration: 'none',
-        }}
-      >
-        <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+      {isExternalLink ? (
+        <Flex
+          py={2}
+          as={Link}
+          href={href}
+          justify={'space-between'}
+          align={'center'}
+          _hover={{
+            textDecoration: 'none',
+          }}
+        >
+          <Text fontWeight={600} color={linkColor}>
+            {label}
+          </Text>
+          {children && (
+            <Icon
+              as={ChevronDownIcon}
+              transition={'all .25s ease-in-out'}
+              transform={isOpen ? 'rotate(180deg)' : ''}
+              w={6}
+              h={6}
+            />
+          )}
+        </Flex>
+      ) : (
+        <Flex
+          py={2}
+          as={ScrollLink}
+          to={href ?? '#'}
+          justify={'space-between'}
+          align={'center'}
+          _hover={{
+            textDecoration: 'none',
+          }}
+        >
+          <Text fontWeight={600} color={linkColor}>
+            {label}
+          </Text>
+          {children && (
+            <Icon
+              as={ChevronDownIcon}
+              transition={'all .25s ease-in-out'}
+              transform={isOpen ? 'rotate(180deg)' : ''}
+              w={6}
+              h={6}
+            />
+          )}
+        </Flex>
+      )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
@@ -237,6 +308,7 @@ interface NavItem {
   subLabel?: string
   children?: NavItem[]
   href?: string
+  isExternal?: boolean
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -255,6 +327,11 @@ const NAV_ITEMS: NavItem[] = [
   {
     label: 'Use Cases',
     href: 'use-cases',
+  },
+  {
+    label: 'Marketplace',
+    href: MARKETPLACE_URL,
+    isExternal: true,
   },
   {
     label: 'Arkeo Difference',

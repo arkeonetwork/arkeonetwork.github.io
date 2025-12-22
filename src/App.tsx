@@ -35,6 +35,7 @@ import { LavaLogo } from './components/Logos/LavaLogo'
 import { PoktLogo } from './components/Logos/PoktLogo'
 import { MarkBg } from './components/MarkBg'
 import { Marketplace } from './components/Marketplace'
+import { MarketplaceSnapshot } from './components/MarketplaceSnapshot'
 import { NavBar } from './components/NavBar'
 import { NetworkGrid } from './components/NetworkGrid'
 import { Orbs } from './components/orbs'
@@ -44,6 +45,8 @@ import { Shield } from './components/Shield'
 import { Spider } from './components/Spider'
 import { VioletBlur } from './components/VioletBlur'
 import { theme } from './theme'
+
+const MARKETPLACE_URL = 'https://marketplace.builtonarkeo.com/'
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -57,14 +60,13 @@ export const App = () => (
       >
         <Image src={HeroBg} position='absolute' top={0} right='-20%' bottom='auto' />
         <Flex flexDir='column' position='relative'>
-          <Heading
-            as='h5'
-            fontSize='md'
-            textTransform='uppercase'
-            fontWeight='black'
-            color='teal.500'
-          >
-            Welcome to arkeo
+          <Heading as='h5' fontSize='md' textTransform='uppercase' fontWeight='black' mb={2}>
+            <Text as='span' color='white' fontWeight='normal'>
+              Welcome to the{' '}
+            </Text>
+            <Text as='span' color='teal.500'>
+              Arkeo Data Marketplace
+            </Text>
           </Heading>
           <Heading
             letterSpacing='-0.03em'
@@ -82,6 +84,9 @@ export const App = () => (
             infrastructure.
           </Text>
         </Flex>
+      </Section>
+      <Section containerProps={{ py: { base: 6, md: 10 } }}>
+        <MarketplaceSnapshot marketplaceUrl={MARKETPLACE_URL} />
       </Section>
       <Section px={{ base: 4, md: 0 }}>
         <SimpleGrid gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={8}>
@@ -695,6 +700,16 @@ export const App = () => (
             </Link>
           </GridSectionRight>
         </GridSection>
+      </Section>
+      <Section as='footer' borderTopWidth={1} borderTopColor='gray.800'>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <Stack spacing={3}>
+            <Heading as='h5' fontSize='lg' textTransform='uppercase' color='purple.200'>
+              Resources
+            </Heading>
+            <Link href={MARKETPLACE_URL}>Marketplace</Link>
+          </Stack>
+        </SimpleGrid>
       </Section>
     </Flex>
   </ChakraProvider>
