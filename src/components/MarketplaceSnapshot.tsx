@@ -2,8 +2,7 @@ import { Box, Button, Heading, Link, SimpleGrid, Stack, Text } from '@chakra-ui/
 import { useEffect, useState } from 'react'
 
 const MARKETPLACE_STATS_URL =
-  process.env.REACT_APP_MARKETPLACE_STATS_URL ??
-  'http://marketplace.builtonarkeo.com:9996/api/cache-counts'
+  process.env.REACT_APP_MARKETPLACE_STATS_URL ?? 'https://marketplace.builtonarkeo.com/api/cache-counts'
 
 const STAT_ITEMS = [
   { key: 'total_paid_uarkeo', label: 'ARKEO Earned' },
