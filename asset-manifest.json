@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/static/js/main.6d8b2783.js",
+    "main.js": "/static/js/main.0294abb4.js",
     "static/js/787.8e8eff89.chunk.js": "/static/js/787.8e8eff89.chunk.js",
     "static/media/arkeo-top-bg.jpeg": "/static/media/arkeo-top-bg.21895c76adc00dd2a9d3.jpeg",
     "index.html": "/index.html",
-    "main.6d8b2783.js.map": "/static/js/main.6d8b2783.js.map",
+    "main.0294abb4.js.map": "/static/js/main.0294abb4.js.map",
     "787.8e8eff89.chunk.js.map": "/static/js/787.8e8eff89.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.6d8b2783.js"
+    "static/js/main.0294abb4.js"
   ]
 }
