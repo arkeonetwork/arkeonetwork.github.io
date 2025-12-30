@@ -2,10 +2,11 @@ import { Box, Button, Heading, Link, SimpleGrid, Stack, Text } from '@chakra-ui/
 import { useEffect, useState } from 'react'
 
 const MARKETPLACE_STATS_URL =
-  process.env.REACT_APP_MARKETPLACE_STATS_URL ?? 'https://marketplace.builtonarkeo.com/api/cache-counts'
+  process.env.REACT_APP_MARKETPLACE_STATS_URL ??
+  'https://marketplace.builtonarkeo.com/api/cache-counts'
 
 const STAT_ITEMS = [
-  { key: 'total_paid_uarkeo', label: 'ARKEO Earned' },
+  { key: 'total_paid_arkeo', label: 'ARKEO Earned' },
   { key: 'total_transactions', label: 'Transactions' },
   { key: 'active_providers', label: 'Providers' },
   { key: 'subscribers', label: 'Subscribers' },
@@ -28,8 +29,10 @@ const readStat = (source: Record<string, unknown>, key: StatKey) =>
 
 const formatStat = (value?: number | string) => {
   if (value === 0) return '0'
-  if (value) return value.toString()
-  return '-'
+  if (value === undefined || value === null || value === '') return '-'
+  const raw = typeof value === 'string' ? value.trim() : value.toString()
+  if (!raw.includes('.')) return raw
+  return raw.replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '')
 }
 
 export const MarketplaceSnapshot = ({ marketplaceUrl }: MarketplaceSnapshotProps) => {
