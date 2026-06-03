@@ -58,6 +58,9 @@ export const NavBar = () => {
             <Button
               as={Link}
               href={MARKETPLACE_URL}
+              isExternal
+              target='_blank'
+              rel='noopener noreferrer'
               bg='teal.500'
               color='white'
               aria-label='Open Arkeo Data Marketplace'
@@ -210,6 +213,9 @@ const MobileNav = () => {
       <Button
         as={Link}
         href={MARKETPLACE_URL}
+        isExternal
+        target='_blank'
+        rel='noopener noreferrer'
         bg='teal.500'
         color='white'
         width='full'
