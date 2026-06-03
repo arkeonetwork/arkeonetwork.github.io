@@ -19,7 +19,7 @@ import { Link as ScrollLink } from 'react-scroll'
 
 import { Logo } from './Logo'
 
-const MARKETPLACE_URL = 'https://marketplace.builtonarkeo.com/'
+const MARKETPLACE_URL = 'https://arkeomarketplace.com/'
 
 export const NavBar = () => {
   const { isOpen, onToggle } = useDisclosure()

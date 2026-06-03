@@ -35,7 +35,6 @@ import { LavaLogo } from './components/Logos/LavaLogo'
 import { PoktLogo } from './components/Logos/PoktLogo'
 import { MarkBg } from './components/MarkBg'
 import { Marketplace } from './components/Marketplace'
-import { MarketplaceSnapshot } from './components/MarketplaceSnapshot'
 import { NavBar } from './components/NavBar'
 import { NetworkGrid } from './components/NetworkGrid'
 import { Orbs } from './components/orbs'
@@ -46,7 +45,7 @@ import { Spider } from './components/Spider'
 import { VioletBlur } from './components/VioletBlur'
 import { theme } from './theme'
 
-const MARKETPLACE_URL = 'https://marketplace.builtonarkeo.com/'
+const MARKETPLACE_URL = 'https://arkeomarketplace.com/'
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -84,9 +83,6 @@ export const App = () => (
             infrastructure.
           </Text>
         </Flex>
-      </Section>
-      <Section containerProps={{ py: { base: 6, md: 10 } }}>
-        <MarketplaceSnapshot marketplaceUrl={MARKETPLACE_URL} />
       </Section>
       <Section px={{ base: 4, md: 0 }}>
         <SimpleGrid gridTemplateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={8}>
